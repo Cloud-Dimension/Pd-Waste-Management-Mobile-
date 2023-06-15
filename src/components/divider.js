@@ -5,6 +5,8 @@ const Divider = () => {
   return <View style={styles.divider} />;
 };
 
+export default Divider;
+
 const styles = StyleSheet.create({
   divider: {
     height: 1,
@@ -17,5 +19,3 @@ const styles = StyleSheet.create({
 
   },
 });
-
-export default Divider;
