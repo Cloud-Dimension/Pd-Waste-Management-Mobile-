@@ -9,6 +9,7 @@ import ExploreStack from "./ExploreStack";
 import RecycleStack from "./RecycleStack";
 import ProfileStack from "./ProfileStack";
 import { FontAwesome } from "@expo/vector-icons";
+import { COLORS } from "../constants/Constants";
 
 const TabNavigator = createBottomTabNavigator();
 
@@ -22,20 +23,20 @@ const Route = ({ isLoggedIn }) => {
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, size }) => {
               let iconName;
-              let color = "#252525";
+              let color = COLORS.BLACK;
 
               if (route.name === "HomeTab") {
                 iconName = focused ? "home" : "home";
-                color = focused ? "#2CAC69" : "#252525";
+                color = focused ? COLORS.PRIMARY: COLORS.BLACK;
               } else if (route.name === "ExploreTab") {
                 iconName = focused ? "search" : "search";
-                color = focused ? "#2CAC69" : "#252525";
+                color = focused ? COLORS.PRIMARY : COLORS.BLACK;
               } else if (route.name === "RecycleTab") {
                 iconName = focused ? "recycle" : "recycle";
-                color = focused ? "#2CAC69" : "#252525";
+                color = focused ? COLORS.PRIMARY : COLORS.BLACK;
               } else if (route.name === "ProfileTab") {
                 iconName = focused ? "user" : "user";
-                color = focused ? "#2CAC69" : "#252525";
+                color = focused ? COLORS.PRIMARY : COLORS.BLACK;
               }
 
               return <FontAwesome name={iconName} size={size} color={color} />;

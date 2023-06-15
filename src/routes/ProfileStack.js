@@ -8,16 +8,18 @@ const ProfileNavigator = createStackNavigator();
 const ProfileStack = () => {
   return (
     <ProfileNavigator.Navigator>
-      <ProfileNavigator.Screen name="My Profile" component={Profile} options={{
+      <ProfileNavigator.Screen
+        name="My Profile"
+        component={Profile}
+        options={{
           headerStyle: {
             backgroundColor: "#2CAC69",
             borderRadius: 25,
             height: 110,
-            fontWeight:'20'
           },
           headerTitleStyle: {
-            fontWeight: 'normal',
-            fontSize: 18
+            fontWeight: "normal",
+            fontSize: 18,
           },
           headerTintColor: "#ffffff",
           headerLeft: () => (
@@ -25,10 +27,11 @@ const ProfileStack = () => {
               name="user-o"
               size={20}
               color="#ffffff"
-              style={{ marginLeft: 20,marginBottom:0 }}
+              style={{ marginLeft: 20, marginBottom: 0 }}
             />
           ),
-        }}/> 
+        }}
+      />
     </ProfileNavigator.Navigator>
   );
 };
