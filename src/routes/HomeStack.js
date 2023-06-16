@@ -7,6 +7,10 @@ import SearchBar from "../components/searchBar";
 import { View, StyleSheet, Text } from "react-native";
 import Complains from "../screens/appFlow/Complains";
 import Map from "../screens/appFlow/Map";
+import Helpline from "../screens/appFlow/Helpline";
+import Bins from "../screens/appFlow/Bins";
+import Collection from "../screens/appFlow/Collection";
+import Events from "../screens/appFlow/Event";
 
 const HomeNavigator = createStackNavigator();
 
@@ -71,8 +75,102 @@ const HomeStack = () => {
           headerTintColor: COLORS.BACKGROUND_WHITE,
         }}
       />
-      <HomeNavigator.Screen name="map" component={Map} />
-      <HomeNavigator.Screen name="complaints" component={Complains} />
+      <HomeNavigator.Screen
+        name="map"
+        component={Map}
+        options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: "normal",
+            fontSize: 18,
+          },
+          headerTintColor: "#ffffff",
+        }}
+      />
+      <HomeNavigator.Screen
+        name="complaints"
+        component={Complains}
+        options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: "normal",
+            fontSize: 18,
+          },
+          headerTintColor: "#ffffff",
+        }}
+      />
+      <HomeNavigator.Screen
+        name="helpline"
+        component={Helpline}
+        options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: "normal",
+            fontSize: 18,
+          },
+          headerTintColor: "#ffffff",
+        }}
+      />
+      <HomeNavigator.Screen
+        name="events"
+        component={Events}
+        options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: "normal",
+            fontSize: 18,
+          },
+          headerTintColor: "#ffffff",
+        }}
+      />
+      <HomeNavigator.Screen
+        name="collection"
+        component={Collection}
+        options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: "normal",
+            fontSize: 18,
+          },
+          headerTintColor: "#ffffff",
+        }}
+      />
+      <HomeNavigator.Screen
+        name="bins"
+        component={Bins}
+        options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: "normal",
+            fontSize: 18,
+          },
+          headerTintColor: "#ffffff",
+        }}
+      />
     </HomeNavigator.Navigator>
   );
 };

@@ -23,7 +23,7 @@ const Carousel = () => {
   ];
 
   return (
-    <Swiper dotColor={COLORS.GREY} activeDotColor={COLORS.SECONDARY}>
+    <Swiper dotColor={COLORS.GREY} activeDotColor={COLORS.PRIMARY}>
       {pages.map((page, index) => (
         <View key={index} style={styles.sliderImageView}>
           <Image source={page.image} style={{}} />
