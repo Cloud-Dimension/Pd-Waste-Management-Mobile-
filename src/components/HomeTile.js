@@ -3,20 +3,19 @@ import React from "react";
 import { Image } from "react-native";
 import { COLORS } from "../constants/Constants";
 import { useNavigation } from "@react-navigation/native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const HomeTile = ({ title, image, page }) => {
   const navigation = useNavigation();
   return (
-    <TouchableWithoutFeedback
-      onPress={() => navigation.navigate(page)}
+    <View
+      onTouchStart={() => navigation.navigate(page)}
       style={styles.tileContainer}
     >
       <View>
         <Image source={image} style={styles.tileIcon} />
       </View>
       <Text style={styles.tileText}>{title}</Text>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     padding: 10,
     height: 150,
-    width:162, //to be fixed, N.B might not be responsive on other devices
+    width: "45%",
     alignItems: "center",
     justifyContent: "center",
     marginHorizontal: 10,
