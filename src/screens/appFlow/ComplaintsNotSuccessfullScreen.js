@@ -2,12 +2,13 @@ import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
 import { COLORS } from "../../constants/Constants";
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
 import WMButton from "../../components/WMButton";
 
 const ComplaintsNotSuccessfullScreen = () => {
-    const imagePath=require("../../../assets/images/banner(2).png")
-    const message ="        This complaint has already \n been registered and is under process"
+  const imagePath = require("../../../assets/images/banner(2).png");
+  const message =
+    "        This complaint has already \n been registered and is under process";
   return (
     <View style={styles.sliderImageView}>
       <Image source={imagePath} style={{}} />
@@ -18,9 +19,16 @@ const ComplaintsNotSuccessfullScreen = () => {
           alignItems: "center",
         }}
       >
-         <FontAwesome name="times-circle" size={45} color="red" style={styles.leftIcon} />
+        <FontAwesome
+          name="times-circle"
+          size={45}
+          color="red"
+          style={styles.leftIcon}
+        />
         <Text style={styles.carouselText}>{message}</Text>
-        <WMButton title={"Back"} color={COLORS.PRIMARY}  width={150} />
+        <View style={{ marginTop:100}}>
+          <WMButton title={"Back"} color={COLORS.PRIMARY} width={150} />
+        </View>
       </View>
     </View>
   );
@@ -33,7 +41,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 50,
   },
   carouselTitle: {
     color: COLORS.PRIMARY,
@@ -46,6 +53,5 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginTop: 30,
     fontWeight: "750",
-    marginBottom:50
   },
 });

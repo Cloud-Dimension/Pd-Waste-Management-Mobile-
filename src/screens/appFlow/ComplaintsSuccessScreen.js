@@ -19,7 +19,9 @@ const ComplaintsSuccessScreen = () => {
       >
          <FontAwesome name="check-circle" size={45} color="green" style={styles.leftIcon} />
         <Text style={styles.carouselText}>Your complaint has been filled</Text>
+        <View  style={{ marginTop:100}}>
         <WMButton title={"Back"} color={COLORS.PRIMARY} width={150} />
+        </View>
       </View>
     </View>
   );
@@ -32,7 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 50,
   },
   carouselTitle: {
     color: COLORS.PRIMARY,
