@@ -1,14 +1,41 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import ComplaintCard from "../../components/complaintCard";
+import { COLORS } from "../../constants/Constants";
 
 const Complains = () => {
   return (
     <View>
-      <Text>Complains</Text>
+      <View style={styles.container}>
+        <View style={{ flexDirection: "column" }}>
+          <View style={styles.complaint}>
+            <ComplaintCard
+              complainType={"File a Complaint"}
+              complaintCount={""}
+              complainTypeIconName={""}
+            />
+          </View>
+          <View style={styles.complaint}>
+            <ComplaintCard
+              complainType={"Previous Complaints"}
+              complaintCount={"2"}
+              complainTypeIconName={""}
+            />
+          </View>
+        </View>
+      </View>
     </View>
-  )
-}
+  );
+};
 
-export default Complains
+export default Complains;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: COLORS.BACKGROUND_WHITE,
+  },
+  complaint: { marginTop: 30, marginBottom: 30 },
+});
