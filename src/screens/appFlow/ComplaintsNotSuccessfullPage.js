@@ -5,7 +5,7 @@ import { COLORS } from "../../constants/Constants";
 import { FontAwesome } from "@expo/vector-icons";
 import WMButton from "../../components/WMButton";
 
-const ComplaintsNotSuccessfullScreen = () => {
+const ComplaintsNotSuccessfullPage = () => {
   const imagePath = require("../../../assets/images/banner(2).png");
   const message =
     "        This complaint has already \n been registered and is under process";
@@ -34,7 +34,7 @@ const ComplaintsNotSuccessfullScreen = () => {
   );
 };
 
-export default ComplaintsNotSuccessfullScreen;
+export default ComplaintsNotSuccessfullPage;
 
 const styles = StyleSheet.create({
   sliderImageView: {

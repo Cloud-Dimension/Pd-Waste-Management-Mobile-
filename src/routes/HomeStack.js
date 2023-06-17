@@ -11,6 +11,7 @@ import Helpline from "../screens/appFlow/Helpline";
 import Bins from "../screens/appFlow/Bins";
 import Collection from "../screens/appFlow/Collection";
 import Events from "../screens/appFlow/Event";
+import HelplineDetailsPage from "../screens/appFlow/HelplineDetailsPage";
 
 const HomeNavigator = createStackNavigator();
 
@@ -158,6 +159,22 @@ const HomeStack = () => {
       <HomeNavigator.Screen
         name="bins"
         component={Bins}
+        options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: "normal",
+            fontSize: 18,
+          },
+          headerTintColor: "#ffffff",
+        }}
+      />
+      <HomeNavigator.Screen
+        name="HelplineDetailsPage"
+        component={HelplineDetailsPage}
         options={{
           headerStyle: {
             backgroundColor: "#2CAC69",

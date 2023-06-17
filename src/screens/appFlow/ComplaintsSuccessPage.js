@@ -5,7 +5,7 @@ import { COLORS } from "../../constants/Constants";
 import { FontAwesome } from '@expo/vector-icons';
 import WMButton from "../../components/WMButton";
 
-const ComplaintsSuccessScreen = () => {
+const ComplaintsSuccessPage = () => {
     const imagePath=require("../../../assets/images/banner(2).png")
   return (
     <View style={styles.sliderImageView}>
@@ -27,7 +27,7 @@ const ComplaintsSuccessScreen = () => {
   );
 };
 
-export default ComplaintsSuccessScreen;
+export default ComplaintsSuccessPage;
 
 const styles = StyleSheet.create({
   sliderImageView: {
