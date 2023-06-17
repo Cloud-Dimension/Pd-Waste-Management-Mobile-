@@ -1,6 +1,7 @@
 import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 import HomeTile from "../../components/HomeTile";
+import { Text } from "react-native";
 
 const truck = require("../../../assets/images/truck.png");
 const Complaints = require("../../../assets/images/complains.png");
@@ -51,15 +52,24 @@ const Home = () => {
   const renderItem = ({ item }) => (
     <HomeTile title={item?.title} image={item?.image} page={item?.page} />
   );
+  const footer = () => (
+    <View style={{ alignItems: "center" }}>
+      <Text style={styles.footer}>
+        Together, let's keep our community clean and sustainable. Dispose of
+        waste responsibly!
+      </Text>
+    </View>
+  );
 
   return (
     <View style={{ justifyContent: "space-around" }}>
       <FlatList
         data={tiles}
         renderItem={renderItem}
-        keyExtractor={(index) => index.toString()}
+        keyExtractor={(item) => item.id}
         numColumns={2}
         contentContainerStyle={styles.gridContainer}
+        ListFooterComponent={footer}
       />
     </View>
   );
@@ -68,6 +78,11 @@ const Home = () => {
 const styles = StyleSheet.create({
   gridContainer: {
     padding: 10,
+  },
+  footer: {
+    padding: 10,
+    color: "#D3D3D3",
+    fontWeight: "500",
   },
 });
 

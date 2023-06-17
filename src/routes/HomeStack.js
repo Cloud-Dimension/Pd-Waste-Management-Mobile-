@@ -11,6 +11,8 @@ import Helpline from "../screens/appFlow/Helpline";
 import Bins from "../screens/appFlow/Bins";
 import Collection from "../screens/appFlow/Collection";
 import Events from "../screens/appFlow/Event";
+import ComplainDetails from "../screens/appFlow/ComplainDetails";
+import PrevComplains from "../screens/appFlow/PrevComplains";
 
 const HomeNavigator = createStackNavigator();
 
@@ -24,7 +26,7 @@ const HomeStack = () => {
           headerStyle: {
             backgroundColor: COLORS.PRIMARY,
             borderRadius: 25,
-            height: 170,
+            height: 130,
           },
           headerTitle: () => (
             <View style={styles.headerContainer}>
@@ -67,9 +69,9 @@ const HomeStack = () => {
                   />
                 </View>
               </View>
-              <View style={styles.searchBarContainer}>
+              {/* <View style={styles.searchBarContainer}>
                 <SearchBar />
-              </View>
+              </View> */}
             </View>
           ),
           headerTintColor: COLORS.BACKGROUND_WHITE,
@@ -169,6 +171,40 @@ const HomeStack = () => {
             fontSize: 18,
           },
           headerTintColor: "#ffffff",
+        }}
+      />
+      <HomeNavigator.Screen
+        name="fileComplain"
+        component={ComplainDetails}
+        options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: "normal",
+            fontSize: 18,
+          },
+          headerTintColor: "#ffffff",
+          headerTitle:'Complaint Form'
+        }}
+      />
+      <HomeNavigator.Screen
+        name="prevComplaints"
+        component={PrevComplains}
+        options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: "normal",
+            fontSize: 18,
+          },
+          headerTintColor: "#ffffff",
+          headerTitle:'Previous Complaints'
         }}
       />
     </HomeNavigator.Navigator>

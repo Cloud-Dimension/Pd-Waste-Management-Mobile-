@@ -7,13 +7,13 @@ const ContactCard = ({data}) => {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <View style={{flexDirection:'row', justifyContent: "space-between"}}>
+        <View style={{flexDirection:'row', justifyContent: "space-between",alignItems:'center'}}>
           <View style={{flexDirection:'row'}}>
-          <FontAwesome name="phone-square" size={28} color="black" style={styles.leftIcon} />
+          <FontAwesome name="phone-square" size={24} color="black" style={styles.leftIcon} />
           <Text style={styles.position}>{data.position||"Mayer"}</Text>
           </View>
           <View style={{flexDirection:'row'}}>
-          <FontAwesome name="info-circle" size={28} color="black" style={styles.rightIcon} />
+          <FontAwesome name="info-circle" size={24} color="black" style={styles.rightIcon} />
           </View>
         </View>
        

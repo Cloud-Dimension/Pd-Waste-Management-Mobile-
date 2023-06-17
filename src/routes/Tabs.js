@@ -1,7 +1,6 @@
 // App.js
 
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AuthStack from "./AuthStack";
 import HomeStack from "./HomeStack";
@@ -10,12 +9,15 @@ import RecycleStack from "./RecycleStack";
 import ProfileStack from "./ProfileStack";
 import { FontAwesome } from "@expo/vector-icons";
 import { COLORS } from "../constants/Constants";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 const TabNavigator = createBottomTabNavigator();
 
-const Route = ({ isLoggedIn }) => {
+const Route = () => {
+  const { isLoggedIn, updateLoginStatus } = useContext(AuthContext);
   return (
-    <NavigationContainer>
+    <>
       {!isLoggedIn ? (
         <AuthStack />
       ) : (
@@ -27,7 +29,7 @@ const Route = ({ isLoggedIn }) => {
 
               if (route.name === "HomeTab") {
                 iconName = focused ? "home" : "home";
-                color = focused ? COLORS.PRIMARY: COLORS.BLACK;
+                color = focused ? COLORS.PRIMARY : COLORS.BLACK;
               } else if (route.name === "ExploreTab") {
                 iconName = focused ? "search" : "search";
                 color = focused ? COLORS.PRIMARY : COLORS.BLACK;
@@ -51,7 +53,7 @@ const Route = ({ isLoggedIn }) => {
           <TabNavigator.Screen name="ProfileTab" component={ProfileStack} />
         </TabNavigator.Navigator>
       )}
-    </NavigationContainer>
+    </>
   );
 };
 

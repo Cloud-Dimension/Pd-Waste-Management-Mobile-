@@ -13,6 +13,7 @@ const Complains = () => {
               complainType={"File a Complaint"}
               complaintCount={""}
               complainTypeIconName={""}
+              page="fileComplain"
             />
           </View>
           <View style={styles.complaint}>
@@ -20,9 +21,11 @@ const Complains = () => {
               complainType={"Previous Complaints"}
               complaintCount={"2"}
               complainTypeIconName={""}
+              page="prevComplaints"
             />
           </View>
         </View>
+        
       </View>
     </View>
   );
