@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
 import { COLORS } from "../../constants/Constants";
@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const Onboarding = () => {
   const navigation = useNavigation();
+  let timeout;
   const pages = [
     {
       image: require("../../../assets/images/wizard1.png"),
@@ -23,9 +24,14 @@ const Onboarding = () => {
       text: "Segregate your waste and learn",
     },
   ];
+
   const handleSwiperIndexChanged = (index) => {
-    if (index === pages.length - 1) {
-      navigation.navigate("Login");
+    const lastIndex = pages.length - 1;
+
+    if (index === lastIndex) {
+      timeout = setTimeout(() => {
+        navigation.navigate("Login");
+      }, 3000);
     }
   };
 
@@ -34,7 +40,6 @@ const Onboarding = () => {
       dotColor={COLORS.GREY}
       activeDotColor={COLORS.PRIMARY}
       onIndexChanged={handleSwiperIndexChanged}
-     
     >
       {pages.map((page, index) => (
         <View key={index} style={styles.sliderImageView}>
