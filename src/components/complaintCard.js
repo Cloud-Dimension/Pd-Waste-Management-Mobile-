@@ -2,17 +2,19 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { COLORS } from "../constants/Constants";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
-const ComplaintCard = ({ complainType, complaintCount, complainTypeIconName }) => {
+const ComplaintCard = ({ complainType, complaintCount, complainTypeIconName,page }) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View style={{ flexDirection: "row" }}>
+        <TouchableWithoutFeedback onPress={() =>{navigation.navigate(page)}} style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <View style={{ flexDirection: "row",alignItems:'center' }}>
             <FontAwesome
               name={complainTypeIconName || "map-marker"}
-              size={28}
-              color="black"
+              size={23}
               style={styles.leftIcon}
             />
             <Text style={styles.complaintText}>
@@ -23,7 +25,7 @@ const ComplaintCard = ({ complainType, complaintCount, complainTypeIconName }) =
             <View
               style={{
                 flexDirection: "row",
-                backgroundColor: COLORS.PRIMARY,
+                backgroundColor: COLORS.SECONDARY,
                 borderRadius: 10,
               }}
             >
@@ -40,7 +42,7 @@ const ComplaintCard = ({ complainType, complaintCount, complainTypeIconName }) =
               <Text style={styles.complaintCount}>{complaintCount}</Text>
             </View>
           )}
-        </View>
+        </TouchableWithoutFeedback>
       </View>
     </View>
   );
@@ -70,9 +72,9 @@ const styles = StyleSheet.create({
     width: 350,
   },
   leftIcon: {
-    marginRight: 0,
-    borderRadius: 6,
-    color: COLORS.PRIMARY,
+    //marginRight: 0,
+    //borderRadius: 6,
+    color: COLORS.SECONDARY,
   },
   complaintText: {
     fontSize: 16,

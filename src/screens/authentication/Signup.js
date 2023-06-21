@@ -4,7 +4,9 @@ import React from 'react'
 const Signup = () => {
   return (
     <View>
-      <Text>Signup</Text>
+      <Text>A 4 digit OTP has been sent to your registered mobile number</Text>
+      <Text>Enter <Text>OTP</Text></Text>
+      
     </View>
   )
 }
