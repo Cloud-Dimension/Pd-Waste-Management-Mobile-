@@ -11,6 +11,7 @@ import Helpline from "../screens/appFlow/Helpline";
 import Bins from "../screens/appFlow/Bins";
 import Collection from "../screens/appFlow/Collection";
 import Events from "../screens/appFlow/Event";
+import HelplineDetailsPage from "../screens/appFlow/HelplineDetailsPage";
 import ComplainDetails from "../screens/appFlow/ComplainDetails";
 import PrevComplains from "../screens/appFlow/PrevComplains";
 
@@ -176,6 +177,23 @@ const HomeStack = () => {
       <HomeNavigator.Screen
         name="fileComplain"
         component={ComplainDetails}
+        options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: "normal",
+            fontSize: 18,
+          },
+          headerTintColor: "#ffffff",
+          headerTitle:'Complaint Form'
+        }}
+      />
+ <HomeNavigator.Screen
+             name="HelplineDetailsPage"
+        component={HelplineDetailsPage}
         options={{
           headerStyle: {
             backgroundColor: "#2CAC69",
