@@ -68,6 +68,12 @@ const Signup = () => {
               </View>
               <View style={styles.inputView}>
                 <InputWithBoarders
+                  placeholder="Municipality"
+                  borderColor={COLORS.PRIMARY}
+                />
+              </View>
+              <View style={styles.inputView}>
+                <InputWithBoarders
                   placeholder="Password"
                   borderColor={COLORS.PRIMARY}
                 />

@@ -95,7 +95,7 @@ const Login = () => {
                 <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
               </TouchableOpacity>
             </View>
-            <View style={{ marginTop: 20 }}>
+            <View style={{ marginTop: 10 }}>
               <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
               <Divider style={{ width:180}} />
               <Text style={styles.orText}>Or</Text>
@@ -123,14 +123,14 @@ const Login = () => {
               padding: 20,
               alignSelf: "center",
               position: "absolute",
-              bottom: 40,
+              bottom: 20,
               flexDirection: "row",
             }}
           >
             <Text style={{ color: COLORS.GREY }}>Don't have an account? </Text>
             <TouchableOpacity
               style={styles.forgotPasswordLink}
-              onPress={()=> navigation.navigate("Signup")}
+              onPress={() =>navigation.navigate("Signup")}
             >
               <Text style={styles.forgotPasswordText}>Sign Up</Text>
             </TouchableOpacity>

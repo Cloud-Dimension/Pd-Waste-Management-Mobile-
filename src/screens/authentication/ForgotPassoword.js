@@ -12,7 +12,7 @@ const ForgotPassoword = () => {
   const navigation = useNavigation();
   const [keyboardOpen, setKeyboardOpen] = useState(false);
 
-  const onLogInClicked = async () => {
+  const onSendOtpClicked = () => {
     navigation.navigate("Otp");
   };
   const handleKeyboardDidShow = () => {
@@ -61,7 +61,7 @@ const ForgotPassoword = () => {
               bottom: 40,
             }}
           >
-            <WMButton title="Send OTP" width={200} onClick={onLogInClicked} />
+            <WMButton title="Send OTP" width={200} onClick={onSendOtpClicked} />
           </View>
         )}
       </KeyboardAvoidingView>
