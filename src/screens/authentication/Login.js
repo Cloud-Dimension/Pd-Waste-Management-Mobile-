@@ -7,13 +7,22 @@ import WMButton from "../../components/WMButton";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
+import { Divider } from "@rneui/base";
 
 const Login = () => {
   const navigation = useNavigation();
+  const { isLoggedIn, updateLoginStatus } = useContext(AuthContext);
   const [keyboardOpen, setKeyboardOpen] = useState(false);
 
+  const onSignInClicked = async () => {
+    
+  };
+
   const onLogInClicked = async () => {
-    navigation.navigate("Otp");
+    if (isLoggedIn) return <AuthStack />;
   };
   const handleKeyboardDidShow = () => {
     setKeyboardOpen(true);
@@ -28,8 +37,7 @@ const Login = () => {
 
     // Clean up the listeners when the component unmounts
     return () => {
-      Keyboard.removeListener("keyboardDidShow", handleKeyboardDidShow);
-      Keyboard.removeListener("keyboardDidHide", handleKeyboardDidHide);
+      Keyboard.removeAllListeners()
     };
   }, []);
 
@@ -38,29 +46,74 @@ const Login = () => {
       <KeyboardAvoidingView style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.container}>
-            <Text style={styles.LoginText}>LOG IN</Text>
             <Text style={styles.enterText}>
               Enter <Text style={styles.imbeddedText}>Mobile Number</Text>
             </Text>
             <Text style={styles.detailText}>
               These details are not shared with anyone
             </Text>
-            <View style={styles.inputView}>
-              <InputWithBoarders
+            <View style={styles.contentView}>
+              <View>
+                <InputWithBoarders
+                  placeholder="E-mail"
+                  borderColor={COLORS.PRIMARY}
+                />
+              </View>
+              <View style={{marginTop:10}}>
+                <InputWithBoarders
+                  placeholder="Password"
+                  borderColor={COLORS.PRIMARY}
+                />
+              </View>
+
+              <View style={{marginTop:10}}>
+                 <InputWithBoarders
                 placeholder="+27xxxxxxxxx"
                 borderColor={COLORS.PRIMARY}
               />
+              </View>
+
+              <TouchableOpacity
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: 20,
+                  marginBottom: 20,
+                }}
+                onPress={() => onLogInClicked}
+              >
+                <WMButton
+                  title="Log In"
+                  width={200}
+                  onClick={onSignInClicked}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.forgotPasswordLink}
+                onPress={() =>  navigation.navigate("ForgotPassoword")}
+              >
+                <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+              </TouchableOpacity>
             </View>
-            <Text style={styles.orText}>OR</Text>
-            <View style={styles.shadowView}>
-              <Entypo name="google--with-circle" size={20} color="black" />
-              <Text style={{ marginHorizontal: 18 }}>Sign in with Google</Text>
-            </View>
-            <View style={styles.shadowView}>
-              <Entypo name="facebook-with-circle" size={20} color="blue" />
-              <Text style={{ marginHorizontal: 10 }}>
-                Sign in with Facebook
-              </Text>
+            <View style={{ marginTop: 20 }}>
+              <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+              <Divider style={{ width:180}} />
+              <Text style={styles.orText}>Or</Text>
+              <Divider style={{ width:180}} />
+              </View>
+             
+              <View style={styles.shadowView}>
+                <Entypo name="google--with-circle" size={20} color="black" />
+                <Text style={{ marginHorizontal: 18 }}>
+                  Sign in with Google
+                </Text>
+              </View>
+              <View style={styles.shadowView}>
+                <Entypo name="facebook-with-circle" size={20} color="blue" />
+                <Text style={{ marginHorizontal: 10 }}>
+                  Sign in with Facebook
+                </Text>
+              </View>
             </View>
           </View>
         </ScrollView>
@@ -71,9 +124,16 @@ const Login = () => {
               alignSelf: "center",
               position: "absolute",
               bottom: 40,
+              flexDirection: "row",
             }}
           >
-            <WMButton title="Send OTP" width={200} onClick={onLogInClicked} />
+            <Text style={{ color: COLORS.GREY }}>Don't have an account? </Text>
+            <TouchableOpacity
+              style={styles.forgotPasswordLink}
+              onPress={()=> navigation.navigate("Signup")}
+            >
+              <Text style={styles.forgotPasswordText}>Sign Up</Text>
+            </TouchableOpacity>
           </View>
         )}
       </KeyboardAvoidingView>
@@ -102,6 +162,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 50,
   },
+  forgotPasswordText: {
+    color: "blue",
+  },
   imbeddedText: {
     color: COLORS.PRIMARY,
   },
@@ -109,13 +172,15 @@ const styles = StyleSheet.create({
     color: COLORS.GREY,
     alignSelf: "center",
   },
-  inputView: {
+  contentView: {
     marginVertical: 30,
+    flexDirection:'column',
+    justifyContent:'space-between'
   },
   orText: {
     color: COLORS.PRIMARY,
     alignSelf: "center",
-    marginBottom: 10,
+    marginTop: 3,
   },
   shadowView: {
     flexDirection: "row",
@@ -132,4 +197,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   imageIcon: {},
+  forgotPasswordLink: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });

@@ -8,12 +8,12 @@ import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 
-const Signup = () => {
+const ForgotPassoword = () => {
   const navigation = useNavigation();
   const [keyboardOpen, setKeyboardOpen] = useState(false);
 
-  const onSignUpClicked = async () => {
-    navigation.navigate("Signup");
+  const onLogInClicked = async () => {
+    navigation.navigate("Otp");
   };
   const handleKeyboardDidShow = () => {
     setKeyboardOpen(true);
@@ -39,45 +39,16 @@ const Signup = () => {
         <ScrollView>
           <View style={styles.container}>
             <Text style={styles.enterText}>
-              Sign <Text style={styles.imbeddedText}>UP</Text>
+              Enter <Text style={styles.imbeddedText}>Mobile Number</Text>
+            </Text>
+            <Text style={styles.detailText}>
+              These details are not shared with anyone
             </Text>
             <View style={styles.inputView}>
-              <View style={styles.inputView}>
-                <InputWithBoarders
-                  placeholder="Full Name"
-                  borderColor={COLORS.PRIMARY}
-                />
-              </View>
-              <View style={styles.inputView}>
-                <InputWithBoarders
-                  placeholder="Surname"
-                  borderColor={COLORS.PRIMARY}
-                />
-              </View>
-              <View style={styles.inputView}>
-                <InputWithBoarders
-                  placeholder="Mobile Number"
-                  borderColor={COLORS.PRIMARY}
-                />
-              </View>
-              <View style={styles.inputView}>
-                <InputWithBoarders
-                  placeholder="E-mail"
-                  borderColor={COLORS.PRIMARY}
-                />
-              </View>
-              <View style={styles.inputView}>
-                <InputWithBoarders
-                  placeholder="Password"
-                  borderColor={COLORS.PRIMARY}
-                />
-              </View>
-              <View style={styles.inputView}>
-                <InputWithBoarders
-                  placeholder="Confirm Password"
-                  borderColor={COLORS.PRIMARY}
-                />
-              </View>
+              <InputWithBoarders
+                placeholder="+27xxxxxxxxx"
+                borderColor={COLORS.PRIMARY}
+              />
             </View>
           </View>
         </ScrollView>
@@ -90,7 +61,7 @@ const Signup = () => {
               bottom: 40,
             }}
           >
-            <WMButton title="Sign Up" width={200} onClick={onSignUpClicked} />
+            <WMButton title="Send OTP" width={200} onClick={onLogInClicked} />
           </View>
         )}
       </KeyboardAvoidingView>
@@ -98,7 +69,7 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default ForgotPassoword;
 
 const styles = StyleSheet.create({
   safeAreaView: {
@@ -128,8 +99,6 @@ const styles = StyleSheet.create({
   },
   inputView: {
     marginVertical: 30,
-    marginTop:10,
-    marginBottom:10
   },
   orText: {
     color: COLORS.PRIMARY,
