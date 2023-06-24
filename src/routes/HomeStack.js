@@ -148,7 +148,12 @@ const HomeStack = () => {
                   color={COLORS.BACKGROUND_WHITE}
                   style={styles.eventsIcon}
                 />
-                <View style={{ flexDirection: "column",alignContent:'flex-start' }}>
+                <View
+                  style={{
+                    flexDirection: "column",
+                    alignContent: "flex-start",
+                  }}
+                >
                   <Text style={styles.eventsLocationTitle}>Events</Text>
                   <Text style={{ color: COLORS.BACKGROUND_WHITE }}>
                     265 West Avenue
@@ -206,11 +211,11 @@ const HomeStack = () => {
             fontSize: 18,
           },
           headerTintColor: "#ffffff",
-          headerTitle:'Complaint Form'
+          headerTitle: "Complaint Form",
         }}
       />
- <HomeNavigator.Screen
-             name="HelplineDetailsPage"
+      <HomeNavigator.Screen
+        name="HelplineDetailsPage"
         component={HelplineDetailsPage}
         options={{
           headerStyle: {
@@ -223,7 +228,7 @@ const HomeStack = () => {
             fontSize: 18,
           },
           headerTintColor: "#ffffff",
-          headerTitle:'Complaint Form'
+          headerTitle: "Complaint Form",
         }}
       />
       <HomeNavigator.Screen
@@ -240,7 +245,7 @@ const HomeStack = () => {
             fontSize: 18,
           },
           headerTintColor: "#ffffff",
-          headerTitle:'Previous Complaints'
+          headerTitle: "Previous Complaints",
         }}
       />
     </HomeNavigator.Navigator>

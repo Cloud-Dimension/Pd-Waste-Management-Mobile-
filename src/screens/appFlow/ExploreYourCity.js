@@ -1,12 +1,23 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Image, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import ContactCard from "../../components/contactCard";
 import { COLORS } from "../../constants/Constants";
+import PostCarousel from "../../components/postCarousel";
+import { posts } from "../../data/testData";
+import { useNavigation } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
 
 const ExploreYourCity = () => {
+  const navigation = useNavigation();
   const [allowCarousel, setAllowCarousel] = useState(true);
   const [activeSlide, setActiveSlide] = useState(0);
   const carouselData = [
@@ -20,7 +31,7 @@ const ExploreYourCity = () => {
   );
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {allowCarousel ? (
         <Carousel
           data={carouselData}
@@ -38,28 +49,84 @@ const ExploreYourCity = () => {
           />
         </View>
       )}
-      <View style={{position: "absolute",marginTop:170}}> 
-      <Pagination
-        dotsLength={carouselData.length}
-        activeDotIndex={activeSlide}
-        containerStyle={styles.paginationContainer}
-        dotStyle={styles.paginationDot}
-        inactiveDotStyle={styles.paginationInactiveDot}
-        inactiveDotOpacity={0.4}
-        inactiveDotScale={0.6}
-      />
+      <View style={{ position: "absolute", marginTop: 170 }}>
+        <Pagination
+          dotsLength={carouselData.length}
+          activeDotIndex={activeSlide}
+          containerStyle={styles.paginationContainer}
+          dotStyle={styles.paginationDot}
+          inactiveDotStyle={styles.paginationInactiveDot}
+          inactiveDotOpacity={0.4}
+          inactiveDotScale={0.6}
+        />
       </View>
-      <View style={{ justifyContent: "center", alignContent: "center", marginTop: 10 }}>
+      <View
+        style={{
+          justifyContent: "center",
+          alignContent: "center",
+          marginTop: 10,
+        }}
+      >
         <ContactCard cardTitle="Know your city" iconName="building" />
       </View>
-    </View>
+      <View style={{ marginTop: 15, marginHorizontal: 10 }}>
+        <Text style={{ color: COLORS.BLACK, fontSize: 14, fontFamily: "bold" }}>
+          Top Articles
+        </Text>
+      </View>
+      <View
+        style={{
+          justifyContent: "center",
+          alignContent: "center",
+          marginTop: 15,
+        }}
+      >
+        <PostCarousel
+          posts={posts}
+          onPress={(item) => navigation.navigate("PostDetails", item)}
+        />
+      </View>
+      <View style={{ marginTop: 15, marginHorizontal: 10 }}>
+        <Text style={{ color: COLORS.BLACK, fontSize: 14, fontFamily: "bold" }}>
+          Recycling Articles
+        </Text>
+      </View>
+      <View
+        style={{
+          justifyContent: "center",
+          alignContent: "center",
+          marginTop: 15,
+        }}
+      >
+        <PostCarousel
+          posts={posts}
+          onPress={(item) => navigation.navigate("PostDetails", item)}
+        />
+      </View>
+      <View style={{ marginTop: 15, marginHorizontal: 10 }}>
+        <Text style={{ color: COLORS.BLACK, fontSize: 14, fontFamily: "bold" }}>
+          Job Opportunities
+        </Text>
+      </View>
+      <View
+        style={{
+          justifyContent: "center",
+          alignContent: "center",
+          marginTop: 15,
+        }}
+      >
+        <PostCarousel
+          posts={posts}
+          onPress={(item) => navigation.navigate("PostDetails", item)}
+        />
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
+    flex: 1,
   },
   carouselImage: {
     width,
