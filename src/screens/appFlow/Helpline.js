@@ -43,15 +43,15 @@ const Helpline = () => {
   
 
   return (
-    <View style={{ flex: 1, marginTop: 20, backgroundColor: "white" }}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <View style={styles.searchBarContainer}>
         <SearchBar />
       </View>
       <FlatList
         data={contacts}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={handleContactPress(item)}>
-            <ContactCard data={item} />
+          <TouchableOpacity  onPress={handleContactPress(item)}>
+            <ContactCard containerStyle={styles.containerStyle} data={item} />
           </TouchableOpacity>
         )}
         ListEmptyComponent={() => <Text>Empty List</Text>}
@@ -67,5 +67,15 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     width: 370,
     marginLeft: 5,
+    backgroundColor: "white",
+    marginTop:20
   },
+  containerStyle:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop:10,
+    marginBottom:10
+  }
 });
+

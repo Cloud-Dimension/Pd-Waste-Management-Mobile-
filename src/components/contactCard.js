@@ -3,17 +3,17 @@ import { View, Text, StyleSheet } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { COLORS } from '../constants/Constants';
 
-const ContactCard = ({data}) => {
+const ContactCard = ({data,containerStyle,cardTitle,iconName,icon2Name}) => {
   return (
-    <View style={styles.container}>
+    <View style={containerStyle||styles.container}>
       <View style={styles.card}>
         <View style={{flexDirection:'row', justifyContent: "space-between",alignItems:'center'}}>
           <View style={{flexDirection:'row'}}>
-          <FontAwesome name="phone-square" size={24} color="black" style={styles.leftIcon} />
-          <Text style={styles.position}>{data.position||"Mayer"}</Text>
+          <FontAwesome name={iconName||"phone-square"} size={24} color="black" style={styles.leftIcon} />
+          <Text style={styles.position}>{data?.position||cardTitle ||"Mayer"}</Text>
           </View>
           <View style={{flexDirection:'row'}}>
-          <FontAwesome name="info-circle" size={24} color="black" style={styles.rightIcon} />
+          <FontAwesome name={icon2Name||"info-circle"} size={24} color="black" style={styles.rightIcon} />
           </View>
         </View>
        
@@ -26,11 +26,7 @@ export default ContactCard;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop:10,
-    marginBottom:10
+
   },
   card: {
     backgroundColor: "white",
