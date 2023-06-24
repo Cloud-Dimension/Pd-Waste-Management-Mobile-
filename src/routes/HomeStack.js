@@ -14,10 +14,13 @@ import Events from "../screens/appFlow/Event";
 import HelplineDetailsPage from "../screens/appFlow/HelplineDetailsPage";
 import ComplainDetails from "../screens/appFlow/ComplainDetails";
 import PrevComplains from "../screens/appFlow/PrevComplains";
+import PostComplaintDetails from "../screens/appFlow/PostComplaintDetails";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeNavigator = createStackNavigator();
 
 const HomeStack = () => {
+  const navigation = useNavigation();
   return (
     <HomeNavigator.Navigator>
       <HomeNavigator.Screen
@@ -197,6 +200,28 @@ const HomeStack = () => {
           headerTintColor: "#ffffff",
         }}
       />
+         <HomeNavigator.Screen name="PostComplaintDetails" component={PostComplaintDetails}   options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: 'normal',
+            fontSize: 18
+          },
+          headerTintColor: "#ffffff",
+          headerLeft: () => (
+            <View style={{ marginLeft: 10 }}>
+              <FontAwesome
+                name="chevron-left"
+                size={20}
+                color={COLORS.BACKGROUND_WHITE}
+                onPress={() => navigation.goBack()}
+              />
+            </View>
+          ),
+        }}/>
       <HomeNavigator.Screen
         name="fileComplain"
         component={ComplainDetails}
