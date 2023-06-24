@@ -37,7 +37,8 @@ const Login = () => {
 
     // Clean up the listeners when the component unmounts
     return () => {
-      Keyboard.removeAllListeners()
+      Keyboard.removeListener("keyboardDidShow", handleKeyboardDidShow);
+      Keyboard.removeListener("keyboardDidHide", handleKeyboardDidHide);
     };
   }, []);
 

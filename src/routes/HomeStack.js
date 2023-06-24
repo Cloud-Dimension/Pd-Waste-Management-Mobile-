@@ -139,6 +139,24 @@ const HomeStack = () => {
             fontWeight: "normal",
             fontSize: 18,
           },
+          headerTitle: () => (
+            <View style={styles.eventsHeaderContainer}>
+              <View style={styles.eventsIconsContainer}>
+                <FontAwesome
+                  name="map-marker"
+                  size={30}
+                  color={COLORS.BACKGROUND_WHITE}
+                  style={styles.eventsIcon}
+                />
+                <View style={{ flexDirection: "column",alignContent:'flex-start' }}>
+                  <Text style={styles.eventsLocationTitle}>Events</Text>
+                  <Text style={{ color: COLORS.BACKGROUND_WHITE }}>
+                    265 West Avenue
+                  </Text>
+                </View>
+              </View>
+            </View>
+          ),
           headerTintColor: "#ffffff",
         }}
       />
@@ -238,6 +256,12 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     flex: 1,
   },
+  eventsHeaderContainer: {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    marginLeft: 0,
+    flex: 1,
+  },
   searchBarContainer: {
     marginBottom: 0,
     width: 300,
@@ -249,7 +273,17 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: 15,
   },
+  eventsIconsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    marginBottom: 15,
+  },
   icon: {
+    marginRight: 10,
+    marginTop: 20,
+  },
+  eventsIcon: {
     marginRight: 10,
     marginTop: 20,
   },
@@ -257,6 +291,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: COLORS.BACKGROUND_WHITE,
     marginRight: 150,
+    marginTop: 20,
+  },
+  eventsLocationTitle: {
+    fontWeight: "bold",
+    color: COLORS.BACKGROUND_WHITE,
+    marginRight: 230,
     marginTop: 20,
   },
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { COLORS } from "../../constants/Constants";
 import { Divider } from "@rneui/base";
@@ -38,63 +38,61 @@ const Events = () => {
     },
   ];
 
+  const windowWidth = Dimensions.get("window").width; // Get the width of the device window
+
   return (
     <View style={styles.card}>
       <View>
         <Image
           source={require("../../../assets/images/truckColl.jpg")}
-          style={{ width: 400, height: 200 }}
+          style={{ width: windowWidth, height: 200 }} // Set the image width to the device window width
         />
       </View>
 
       <View style={styles.scheduleCard}>
         <View style={styles.cardTitleContainer}>
-          <View style={{ marginLeft: 20 }}>
+          <View style={styles.scheduleDayContainer}>
             <Text style={styles.leftCardSecondTitle}>Day</Text>
           </View>
-          <View style={{ marginRight: 40 }}>
+          <View>
             <Text style={styles.leftCardSecondTitle}>Time</Text>
           </View>
         </View>
-        <Divider style={{ marginTop: 5, marginBottom: 5 }} />
+        <Divider style={{ marginTop: 10, marginBottom: 10, width:windowWidth }} /> 
         {dummyData.map((data, index) => (
-          <View key={index}>
-            <View
-              style={{
-                flexDirection: "row",
-                marginTop: 5,
-                justifyContent: "space-between",
-              }}
-            >
-              <View>
-                <Text style={styles.scheduleDay}>{data.day}</Text>
+          <View key={index} style={styles.scheduleRow}>
+            <View style={styles.scheduleDayContainer}>
+              <View style={{paddingRight:15,paddingLeft: 15,marginLeft: 10,}}>
+              <Text style={styles.scheduleDay}>{data.day}</Text>
               </View>
-              <View style={{ width: 20, alignItems: "center" }}>
-                {data.Status === "collecting" ? (
-                  <FontAwesome
-                    name="check"
-                    size={20}
-                    color={COLORS.PRIMARY}
-                    style={styles.icon}
-                  />
-                ) : (
-                  <FontAwesome
-                    name="times"
-                    size={20}
-                    color={COLORS.PRIMARY}
-                    style={styles.icon}
-                  />
-                )}
-              </View>
-              <View>
-                {data.Status === "notcollecting" ? (
-                  <Text style={styles.scheduleTime}>Not Collect</Text>
-                ) : (
-                  <Text style={styles.scheduleTime}>{data.time}</Text>
-                )}
-              </View>
+          
+              <Divider style={{ marginTop: 10, marginBottom: 10, width: windowWidth, marginRight: 80 }} />
             </View>
-            <Divider style={{ marginTop: 10, marginBottom: 10 }} />
+            
+            <View style={styles.iconContainer}>
+              {data.Status === "collecting" ? (
+                <FontAwesome
+                  name="check"
+                  size={20}
+                  color={COLORS.PRIMARY}
+                  style={styles.icon}
+                />
+              ) : (
+                <FontAwesome
+                  name="times"
+                  size={20}
+                  color={COLORS.PRIMARY}
+                  style={styles.icon}
+                />
+              )}
+            </View>
+            <View style={styles.scheduleTimeContainer}>
+              {data.Status === "notcollecting" ? (
+                <Text style={styles.scheduleTime}>Not Collect</Text>
+              ) : (
+                <Text style={styles.scheduleTime}>{data.time}</Text>
+              )}
+            </View>
           </View>
         ))}
       </View>
@@ -111,43 +109,54 @@ const styles = StyleSheet.create({
   },
   scheduleCard: {
     marginTop: 10,
-    padding: 15,
-  },
-  divider: {
-    height: 1,
-    backgroundColor: "#aba9a6",
+    padding: 0,
   },
   cardTitleContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    paddingRight:15,
+    paddingLeft: 15
+  },
+  scheduleRow: {
+    flexDirection: "row",
+    marginTop: 5,
+    
+  },
+  scheduleDayContainer: {
+    flex: 1,
+    marginLeft: 0,
+  },
+  iconContainer: {
+    width: 20,
+    paddingRight:15,
+    paddingLeft: 15
+  },
+  scheduleTimeContainer: {
+    flex: 1,
+    marginRight: 10,
+    alignItems: "flex-end",
+    paddingRight:15,
+    paddingLeft: 15
   },
   icon: {
-    marginRight: 0,
     marginBottom: 5,
     justifyContent: "center",
-    alignItems: "center",
-    width: 20, 
-
+    width: 20,
   },
   leftCardSecondTitle: {
     fontWeight: "bold",
     color: "#0d0d0c",
-    marginLeft: 10,
+    marginLeft: 20,
+    marginRight: 20,
   },
   scheduleTime: {
     fontWeight: "500",
     color: COLORS.GREY,
     fontSize: 13,
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: 10,
   },
   scheduleDay: {
-    marginLeft: 10,
     fontWeight: "bold",
     color: COLORS.BLACK,
     fontSize: 13,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
