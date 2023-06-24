@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import { View, ScrollView, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  ScrollView,
+  Image,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { COLORS } from "../constants/Constants";
 
-const PostCard = ({ image, description,onPress }) => {
+const PostCard = ({ image, description, onPress }) => {
   const [showLocation, setShowLocation] = useState(false);
 
   return (
@@ -13,7 +20,11 @@ const PostCard = ({ image, description,onPress }) => {
           <Image source={image} style={styles.image} />
         </View>
         <View style={styles.descriptionContainer}>
-          <Text numberOfLines={2} ellipsizeMode="tail" style={styles.description}>
+          <Text
+            numberOfLines={2}
+            ellipsizeMode="tail"
+            style={styles.description}
+          >
             {description}
           </Text>
           {showLocation ? (
@@ -34,20 +45,19 @@ const PostCard = ({ image, description,onPress }) => {
 };
 
 const PostCarousel = ({ posts, onPress }) => (
-    <ScrollView horizontal>
-      <View style={styles.container}>
-        {posts?.map((post) => (
-          <PostCard
-            key={post.id}
-            image={post.image}
-            description={post.description}
-            onPress={() => onPress(post)}
-          />
-        ))}
-      </View>
-    </ScrollView>
-  );
-  
+  <ScrollView horizontal>
+    <View style={styles.container}>
+      {posts?.map((post) => (
+        <PostCard
+          key={post.id}
+          image={post.image}
+          description={post.description}
+          onPress={() => onPress(post)}
+        />
+      ))}
+    </View>
+  </ScrollView>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -79,7 +89,7 @@ const styles = StyleSheet.create({
   description: {
     color: COLORS.BLACK,
     fontSize: 14,
-    fontFamily: 'normal',
+    fontFamily: "normal",
   },
   locationContainer: {
     flexDirection: "row",
