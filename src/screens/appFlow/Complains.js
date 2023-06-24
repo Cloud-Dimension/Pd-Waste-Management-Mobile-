@@ -31,16 +31,15 @@ const Complains = () => {
           </View>
         </View>
         <View
-        style={{
-          justifyContent: "center",
-          alignContent: "center",
-          marginTop: 40,
-          marginBottom:15
-        
-        }}
-      >
-       <Text style={{marginRight:10}}>Latest complaints around you</Text>
-      </View>
+          style={{
+            justifyContent: "center",
+            alignContent: "center",
+            marginTop: 40,
+            marginBottom: 15,
+          }}
+        >
+          <Text style={{ marginRight: 10 }}>Latest complaints around you</Text>
+        </View>
         <View
           style={{
             justifyContent: "center",
@@ -61,10 +60,12 @@ const Complains = () => {
               overflow: "hidden",
               backgroundColor: COLORS.BACKGROUND_WHITE,
             }}
-            descriptionContainer={{backgroundColor: COLORS.BACKGROUND_WHITE,
+            descriptionContainer={{
+              backgroundColor: COLORS.BACKGROUND_WHITE,
               paddingHorizontal: 15,
               paddingVertical: 10,
-              height: 10,}}
+              height: 10,
+            }}
             showIconLocation={true}
           />
         </View>
@@ -77,7 +78,6 @@ export default Complains;
 
 const styles = StyleSheet.create({
   container: {
-
     backgroundColor: COLORS.BACKGROUND_WHITE,
   },
   complaint: { marginTop: 30, marginBottom: 30 },

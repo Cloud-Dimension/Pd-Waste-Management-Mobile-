@@ -29,7 +29,11 @@ const PostCard = ({ image, category, onPress, address }) => {
                 color={COLORS.PRIMARY}
                 style={styles.locationIcon}
               />
-              <Text numberOfLines={1} ellipsizeMode="tail" style={styles.locationText}>
+              <Text
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                style={styles.locationText}
+              >
                 {address || "265 West Avenue"}
               </Text>
             </View>
