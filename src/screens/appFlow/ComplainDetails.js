@@ -24,13 +24,13 @@ const ComplainDetails = () => {
 
   const onTakePictureClicked = async () => {
     const uri = await takePictureAsync();
-    setModalOpen(false)
+    setModalOpen(false);
     setImage(uri);
   };
 
   const onPickImageClicked = async () => {
     const uri = await pickImageAsync();
-    setModalOpen(false)
+    setModalOpen(false);
     setImage(uri);
   };
 
