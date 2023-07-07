@@ -4,10 +4,12 @@ import Swiper from "react-native-swiper";
 import { COLORS } from "../../constants/Constants";
 import { FontAwesome } from '@expo/vector-icons';
 import WMButton from "../../components/WMButton";
+import AppView from "../../components/AppView";
 
 const ComplaintsSuccessPage = () => {
     const imagePath=require("../../../assets/images/banner(2).png")
   return (
+    <AppView>
     <View style={styles.sliderImageView}>
       <Image source={imagePath} style={{}} />
       <View
@@ -24,6 +26,7 @@ const ComplaintsSuccessPage = () => {
         </View>
       </View>
     </View>
+    </AppView>
   );
 };
 

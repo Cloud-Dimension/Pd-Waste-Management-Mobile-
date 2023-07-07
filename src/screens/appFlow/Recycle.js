@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, Dimensions ,FlatList } from "react-native";
 import HomeTile from "../../components/HomeTile";
+import AppView from "../../components/AppView";
 
 const truck = require("../../../assets/images/truck.png");
 const Complaints = require("../../../assets/images/complains.png");
@@ -45,7 +46,7 @@ const Recycle = () => {
   const windowWidth = Dimensions.get("window").width;
 
   return (
-    <View style={styles.card}>
+    <AppView>
       <View>
         <Image
           source={require("../../../assets/images/truckColl.jpg")}
@@ -63,7 +64,7 @@ const Recycle = () => {
 
       />
     </View>
-    </View>
+    </AppView>
   );
 };
 

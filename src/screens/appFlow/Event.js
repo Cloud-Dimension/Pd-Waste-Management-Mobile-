@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { COLORS } from "../../constants/Constants";
 import { Divider } from "@rneui/base";
+import AppView from "../../components/AppView";
 
 const Events = () => {
   const dummyData = [
@@ -41,7 +42,7 @@ const Events = () => {
   const windowWidth = Dimensions.get("window").width; // Get the width of the device window
 
   return (
-    <View style={styles.card}>
+    <AppView>
       <View>
         <Image
           source={require("../../../assets/images/truckColl.jpg")}
@@ -96,7 +97,7 @@ const Events = () => {
           </View>
         ))}
       </View>
-    </View>
+    </AppView>
   );
 };
 

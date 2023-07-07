@@ -17,6 +17,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import AppView from "../../components/AppView";
 
 const Profile = () => {
   const navigation = useNavigation();
@@ -61,7 +62,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.safeAreaView}>
+    <AppView>
       <KeyboardAvoidingView style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.container}>
@@ -150,7 +151,7 @@ const Profile = () => {
           </View>
         )}
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </AppView>
   );
 };
 

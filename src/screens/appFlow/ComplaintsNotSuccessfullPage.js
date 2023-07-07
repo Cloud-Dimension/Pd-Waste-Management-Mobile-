@@ -4,12 +4,14 @@ import Swiper from "react-native-swiper";
 import { COLORS } from "../../constants/Constants";
 import { FontAwesome } from "@expo/vector-icons";
 import WMButton from "../../components/WMButton";
+import AppView from "../../components/AppView";
 
 const ComplaintsNotSuccessfullPage = () => {
   const imagePath = require("../../../assets/images/banner(2).png");
   const message =
     "        This complaint has already \n been registered and is under process";
   return (
+    <AppView>
     <View style={styles.sliderImageView}>
       <Image source={imagePath} style={{}} />
       <View
@@ -31,6 +33,7 @@ const ComplaintsNotSuccessfullPage = () => {
         </View>
       </View>
     </View>
+    </AppView>
   );
 };
 

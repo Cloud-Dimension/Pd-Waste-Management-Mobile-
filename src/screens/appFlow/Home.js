@@ -2,6 +2,7 @@ import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 import HomeTile from "../../components/HomeTile";
 import { Text } from "react-native";
+import AppView from "../../components/AppView";
 
 const truck = require("../../../assets/images/truck.png");
 const Complaints = require("../../../assets/images/complains.png");
@@ -62,6 +63,7 @@ const Home = () => {
   );
 
   return (
+    <AppView>
     <View style={{ justifyContent: "space-around" }}>
       <FlatList
         data={tiles}
@@ -72,6 +74,7 @@ const Home = () => {
         ListFooterComponent={footer}
       />
     </View>
+    </AppView>
   );
 };
 

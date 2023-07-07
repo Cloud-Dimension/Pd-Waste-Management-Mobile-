@@ -11,6 +11,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import { Divider } from "@rneui/base";
+import AppView from "../../components/AppView";
 
 const Login = () => {
   const navigation = useNavigation();
@@ -43,7 +44,7 @@ const Login = () => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.safeAreaView}>
+    <AppView>
       <KeyboardAvoidingView style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.container}>
@@ -65,13 +66,6 @@ const Login = () => {
                   placeholder="Password"
                   borderColor={COLORS.PRIMARY}
                 />
-              </View>
-
-              <View style={{marginTop:10}}>
-                 <InputWithBoarders
-                placeholder="+27xxxxxxxxx"
-                borderColor={COLORS.PRIMARY}
-              />
               </View>
 
               <TouchableOpacity
@@ -138,7 +132,7 @@ const Login = () => {
           </View>
         )}
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </AppView>
   );
 };
 

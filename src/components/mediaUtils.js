@@ -27,11 +27,12 @@ export default async function getPermissionAsync(permission) {
   return true;
 }
 
-export async function getLocationAsync(onSend) {
+export async function getLocationAsync() {
   if (await Location.requestForegroundPermissionsAsync()) {
     const location = await Location.getCurrentPositionAsync({});
     if (location) {
-      onSend([{ location: location.coords }]);
+      //onSend([{ location: location.coords }]);
+      return location.coords
     }
   }
 }

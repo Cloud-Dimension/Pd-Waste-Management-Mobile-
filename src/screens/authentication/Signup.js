@@ -7,6 +7,7 @@ import WMButton from "../../components/WMButton";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
+import AppView from "../../components/AppView";
 
 const Signup = () => {
   const navigation = useNavigation();
@@ -34,7 +35,7 @@ const Signup = () => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.safeAreaView}>
+    <AppView style={styles.safeAreaView}>
       <KeyboardAvoidingView style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.container}>
@@ -74,7 +75,13 @@ const Signup = () => {
               </View>
               <View style={styles.inputView}>
                 <InputWithBoarders
-                  placeholder="Street Name"
+                  placeholder="Address"
+                  borderColor={COLORS.PRIMARY}
+                />
+              </View>
+              <View style={styles.inputView}>
+                <InputWithBoarders
+                  placeholder="Role"
                   borderColor={COLORS.PRIMARY}
                 />
               </View>
@@ -106,7 +113,7 @@ const Signup = () => {
           </View>
         )}
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </AppView>
   );
 };
 

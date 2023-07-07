@@ -5,6 +5,7 @@ import { COLORS } from "../../constants/Constants";
 import { useNavigation } from "@react-navigation/native";
 import WMButton from "../../components/WMButton";
 import { FontAwesome } from "@expo/vector-icons";
+import AppView from "../../components/AppView";
 
 const Onboarding = () => {
   const navigation = useNavigation();
@@ -62,7 +63,7 @@ const Onboarding = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <AppView style={styles.container}>
       <Swiper
         ref={swiperRef}
         dotColor={COLORS.GREY}
@@ -108,7 +109,7 @@ const Onboarding = () => {
           </View>
         </View>
       </View>
-    </View>
+    </AppView>
   );
 };
 

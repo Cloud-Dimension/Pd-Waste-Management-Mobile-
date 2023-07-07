@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { COLORS } from "../../constants/Constants";
+import AppView from "../../components/AppView";
 
 const HelplineDetailsPage = (props) => {
   const params = props.route.params.item;
@@ -14,6 +15,7 @@ const HelplineDetailsPage = (props) => {
   };
 
   return (
+    <AppView>
     <View style={styles.card}>
       <View style={styles.cardTitleContainer}>
         <FontAwesome
@@ -72,6 +74,7 @@ const HelplineDetailsPage = (props) => {
         </View>
       </View>
     </View>
+    </AppView>
   );
 };
 

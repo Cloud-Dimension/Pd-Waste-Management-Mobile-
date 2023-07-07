@@ -14,6 +14,7 @@ import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { COLORS } from "../../constants/Constants";
 import { takePictureAsync, pickImageAsync } from "../../components/mediaUtils";
+import AppView from "../../components/AppView";
 
 const ComplainDetails = () => {
   const [municipality, setMunicipality] = useState("");
@@ -35,8 +36,7 @@ const ComplainDetails = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView style={{ flex: 1 }}>
+      <AppView>
         <View style={styles.container}>
           <Text style={styles.header}>File your complaint</Text>
           <Box maxW="full" shadow={2} style={{ marginVertical: 10 }}>
@@ -196,8 +196,7 @@ const ComplainDetails = () => {
             </View>
           </View>
         </Modal>
-      </ScrollView>
-    </SafeAreaView>
+      </AppView>
   );
 };
 

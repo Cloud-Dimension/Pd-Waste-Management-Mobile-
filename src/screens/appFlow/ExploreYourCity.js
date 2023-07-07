@@ -13,6 +13,7 @@ import { COLORS } from "../../constants/Constants";
 import PostCarousel from "../../components/postCarousel";
 import { posts } from "../../data/testData";
 import { useNavigation } from "@react-navigation/native";
+import AppView from "../../components/AppView";
 
 const { width } = Dimensions.get("window");
 
@@ -31,7 +32,7 @@ const ExploreYourCity = () => {
   );
 
   return (
-    <ScrollView style={styles.container}>
+    <AppView>
       {allowCarousel ? (
         <Carousel
           data={carouselData}
@@ -120,7 +121,7 @@ const ExploreYourCity = () => {
           onPress={(item) => navigation.navigate("PostDetails", item)}
         />
       </View>
-    </ScrollView>
+    </AppView>
   );
 };
 

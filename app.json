@@ -11,15 +11,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "plugins": [
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "Allow $(PRODUCT_NAME) to access your photo",
-          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
-        }
-      ]
-    ],
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -27,7 +18,8 @@
       "supportsTablet": true,
       "infoPlist": {
         "NSCameraUsageDescription": "Allow access to the camera",
-        "NSPhotoLibraryUsageDescription": "Allow access to the photo library"
+        "NSPhotoLibraryUsageDescription": "Allow access to the photo library",
+        "NSLocationWhenInUseUsageDescription": "Allow access to location while using the app"
       }
     },
     "android": {
@@ -38,7 +30,9 @@
       "permissions": [
         "CAMERA",
         "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE"
+        "WRITE_EXTERNAL_STORAGE",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
       ]
     },
     "web": {

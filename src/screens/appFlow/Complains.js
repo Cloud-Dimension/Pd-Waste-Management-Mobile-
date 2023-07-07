@@ -6,11 +6,12 @@ import { useNavigation } from "@react-navigation/native";
 import { posts } from "../../data/testData";
 import ComplaintPostCarousel from "../../components/complaintPostCarousel";
 import ContactCard from "../../components/contactCard";
+import AppView from "../../components/AppView";
 
 const Complains = () => {
   const navigation = useNavigation();
   return (
-    <View>
+    <AppView>
       <View style={styles.container}>
         <View style={{ flexDirection: "column" }}>
           <View style={styles.complaint}>
@@ -70,7 +71,7 @@ const Complains = () => {
           />
         </View>
       </View>
-    </View>
+    </AppView>
   );
 };
 
@@ -80,5 +81,5 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.BACKGROUND_WHITE,
   },
-  complaint: { marginTop: 30, marginBottom: 30 },
+  complaint: { marginTop: 10, marginBottom: 10 },
 });

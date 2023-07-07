@@ -6,6 +6,7 @@ import { COLORS } from "../../constants/Constants";
 import { useNavigation } from "@react-navigation/native";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import AppView from "../../components/AppView";
 
 const OtpInput = () => {
   const navigation = useNavigation();
@@ -26,7 +27,7 @@ const OtpInput = () => {
   };
 
   return (
-    <SafeAreaView>
+    <AppView>
       <ScrollView>
         <View style={styles.container}>
           <Text style={styles.infoText}>
@@ -57,7 +58,7 @@ const OtpInput = () => {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </AppView>
   );
 };
 

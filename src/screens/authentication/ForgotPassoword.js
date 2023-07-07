@@ -7,6 +7,7 @@ import WMButton from "../../components/WMButton";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
+import AppView from "../../components/AppView";
 
 const ForgotPassoword = () => {
   const navigation = useNavigation();
@@ -34,7 +35,7 @@ const ForgotPassoword = () => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.safeAreaView}>
+    <AppView>
       <KeyboardAvoidingView style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.container}>
@@ -65,7 +66,7 @@ const ForgotPassoword = () => {
           </View>
         )}
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </AppView>
   );
 };
 

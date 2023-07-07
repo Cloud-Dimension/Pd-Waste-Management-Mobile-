@@ -4,6 +4,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import SearchBar from "../../components/searchBar";
 import ContactCard from "../../../src/components/contactCard";
+import AppView from "../../components/AppView";
 
 const Helpline = () => {
   const navigation = useNavigation();
@@ -43,7 +44,7 @@ const Helpline = () => {
   
 
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <AppView>
       <View style={styles.searchBarContainer}>
         <SearchBar />
       </View>
@@ -56,7 +57,7 @@ const Helpline = () => {
         )}
         ListEmptyComponent={() => <Text>Empty List</Text>}
       />
-    </View>
+    </AppView>
   );
 };
 
