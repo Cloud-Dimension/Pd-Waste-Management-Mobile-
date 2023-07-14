@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from "react-native";
+import { FlatList, TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import SearchBar from "../../components/searchBar";
 import ContactCard from "../../../src/components/contactCard";
@@ -44,20 +44,21 @@ const Helpline = () => {
   
 
   return (
-    <AppView>
-      <View style={styles.searchBarContainer}>
+    <SafeAreaView>
+      {/* <View style={styles.searchBarContainer}>
         <SearchBar />
-      </View>
+      </View> */}
       <FlatList
         data={contacts}
         renderItem={({ item }) => (
-          <TouchableOpacity  onPress={handleContactPress(item)}>
+          <TouchableWithoutFeedback  onPress={handleContactPress(item)}>
             <ContactCard containerStyle={styles.containerStyle} data={item} />
-          </TouchableOpacity>
+          </TouchableWithoutFeedback>
         )}
         ListEmptyComponent={() => <Text>Empty List</Text>}
       />
-    </AppView>
+      </SafeAreaView>
+
   );
 };
 

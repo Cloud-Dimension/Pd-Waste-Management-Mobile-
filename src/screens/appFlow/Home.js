@@ -63,7 +63,6 @@ const Home = () => {
   );
 
   return (
-    <AppView>
     <View style={{ justifyContent: "space-around" }}>
       <FlatList
         data={tiles}
@@ -74,7 +73,7 @@ const Home = () => {
         ListFooterComponent={footer}
       />
     </View>
-    </AppView>
+  
   );
 };
 

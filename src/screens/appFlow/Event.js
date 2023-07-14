@@ -1,163 +1,120 @@
-import React from "react";
-import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import { COLORS } from "../../constants/Constants";
-import { Divider } from "@rneui/base";
-import AppView from "../../components/AppView";
+import React, { useEffect, useState } from "react";
+import { FlatList, View, Text, RefreshControl, StyleSheet } from "react-native";
 
-const Events = () => {
-  const dummyData = [
-    {
-      day: "Monday",
-      Status: "collecting",
-      time: "10:00PM",
-    },
-    {
-      day: "Tuesday",
-      Status: "notcollecting",
-      time: "2:00 PM",
-    },
-    {
-      day: "Wednesday",
-      Status: "notcollecting",
-      time: "10:00 AM",
-    },
-    {
-      day: "Thursdays",
-      Status: "notcollecting",
-      time: "2:00 PM",
-    },
-    {
-      day: "Friday",
-      Status: "notcollecting",
-      time: "2:00 PM",
-    },
-    {
-      day: "Public Holidays",
-      Status: "notcollecting",
-      time: "2:00 PM",
-    },
+import { useNavigation } from "@react-navigation/native";
+import ComplainItem from "../../components/PrevComplaint";
+import EventItem from "../../components/EventItem";
+
+
+
+const data = [
+  {
+  key: "1",
+  title: "Community Cleanup Day",
+  description: "Join us for a community cleanup day on Oak Avenue this Saturday. Help us beautify our neighborhood by removing trash and debris.",
+  status:"Upcoming"
+  },
+  {
+  key: "2",
+  title: "Town Hall Meeting: Road Maintenance",
+  description: "We invite all residents to attend a town hall meeting to discuss road maintenance issues, including potholes on Main Street. Your input is valuable!",
+  status: "Upcoming"
+  },
+  {
+  key: "3",
+  title: "Report Streetlight Issues",
+  description: "Please report any non-functioning streetlights in our municipality. Your prompt reporting will help us ensure adequate lighting for safety at night.",
+  status: "Ongoing"
+  },
+  {
+  key: "4",
+  title: "Garbage Collection Delayed",
+  description: "Due to unforeseen circumstances, garbage collection on Elm Street will be delayed by one day. We apologize for the inconvenience and appreciate your patience.",
+  status: "Ongoing"
+  },
+  {
+  key: "5",
+  title: "Residential Parking Regulations",
+  description: "Reminder: Parking in the residential area on Maple Lane is restricted to designated parking spots only. Illegally parked vehicles will be towed.",
+  status: "Ongoing"
+  },
+  {
+  key: "6",
+  title: "Sidewalk Repair Project",
+  description: "We are aware of the damaged sidewalk near the park. A repair project is scheduled to start next week for the safety of pedestrians. Please use alternative routes.",
+  status: "Upcoming"
+  },
+  {
+  key: "7",
+  title: "Sewer System Maintenance",
+  description: "Our team is actively working to address the overflowing sewer drain on Oak Street. We apologize for the inconvenience and expect to resolve the issue soon.",
+  status: "Ongoing"
+  },
+  {
+  key: "8",
+  title: "Playground Renovation",
+  description: "Exciting news! The damaged playground equipment in the park will be renovated and upgraded to ensure a safe and enjoyable experience for children. Stay tuned for updates.",
+  status: "Upcoming"
+  }
   ];
 
-  const windowWidth = Dimensions.get("window").width; // Get the width of the device window
+const Events = () => {
+  const navigation = useNavigation();
+  const [refreshing, setRefreshing] = useState(false);
+ // const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const onItemClicked = (description) => {
+    navigation.navigate("reportedComplaint", { description: description });
+  };
+
+  const getComplaints = async () => {
+   
+  };
+  useEffect(() => {
+    //getComplaints();
+  }, []);
+  const renderItem = ({ item }) => (
+    <View>
+      <EventItem
+        topic={item?.title}
+        description={item?.status}
+        onClick={() => onItemClicked(item?.description)}
+      />
+    </View>
+  );
+
+  const EmptyListComponent = () => (
+    <View style={{ alignItems: "center", justifyContent: "center" }}>
+      <Text style={{ color: "gray" }}>
+        You don't have any previous complains😁
+      </Text>
+    </View>
+  );
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    await getNotifications();
+    setRefreshing(false);
+  };
 
   return (
-    <AppView>
-      <View>
-        <Image
-          source={require("../../../assets/images/truckColl.jpg")}
-          style={{ width: windowWidth, height: 200 }} // Set the image width to the device window width
-        />
-      </View>
-
-      <View style={styles.scheduleCard}>
-        <View style={styles.cardTitleContainer}>
-          <View style={styles.scheduleDayContainer}>
-            <Text style={styles.leftCardSecondTitle}>Day</Text>
-          </View>
-          <View>
-            <Text style={styles.leftCardSecondTitle}>Time</Text>
-          </View>
-        </View>
-        <Divider style={{ marginTop: 10, marginBottom: 10, width:windowWidth }} /> 
-        {dummyData.map((data, index) => (
-          <View key={index} style={styles.scheduleRow}>
-            <View style={styles.scheduleDayContainer}>
-              <View style={{paddingRight:15,paddingLeft: 15,marginLeft: 10,}}>
-              <Text style={styles.scheduleDay}>{data.day}</Text>
-              </View>
-          
-              <Divider style={{ marginTop: 10, marginBottom: 10, width: windowWidth, marginRight: 80 }} />
-            </View>
-            
-            <View style={styles.iconContainer}>
-              {data.Status === "collecting" ? (
-                <FontAwesome
-                  name="check"
-                  size={20}
-                  color={COLORS.PRIMARY}
-                  style={styles.icon}
-                />
-              ) : (
-                <FontAwesome
-                  name="times"
-                  size={20}
-                  color={COLORS.PRIMARY}
-                  style={styles.icon}
-                />
-              )}
-            </View>
-            <View style={styles.scheduleTimeContainer}>
-              {data.Status === "notcollecting" ? (
-                <Text style={styles.scheduleTime}>Not Collect</Text>
-              ) : (
-                <Text style={styles.scheduleTime}>{data.time}</Text>
-              )}
-            </View>
-          </View>
-        ))}
-      </View>
-    </AppView>
+    <View style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+        }
+        ListEmptyComponent={EmptyListComponent}
+      />
+      {/* {isLoading && <Loader/>} */}
+    </View>
   );
 };
 
 export default Events;
-
 const styles = StyleSheet.create({
-  card: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-  scheduleCard: {
-    marginTop: 10,
-    padding: 0,
-  },
-  cardTitleContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingRight:15,
-    paddingLeft: 15
-  },
-  scheduleRow: {
-    flexDirection: "row",
-    marginTop: 5,
-    
-  },
-  scheduleDayContainer: {
-    flex: 1,
-    marginLeft: 0,
-  },
-  iconContainer: {
-    width: 20,
-    paddingRight:15,
-    paddingLeft: 15
-  },
-  scheduleTimeContainer: {
-    flex: 1,
-    marginRight: 10,
-    alignItems: "flex-end",
-    paddingRight:15,
-    paddingLeft: 15
-  },
-  icon: {
-    marginBottom: 5,
-    justifyContent: "center",
-    width: 20,
-  },
-  leftCardSecondTitle: {
-    fontWeight: "bold",
-    color: "#0d0d0c",
-    marginLeft: 20,
-    marginRight: 20,
-  },
-  scheduleTime: {
-    fontWeight: "500",
-    color: COLORS.GREY,
-    fontSize: 13,
-  },
-  scheduleDay: {
-    fontWeight: "bold",
-    color: COLORS.BLACK,
-    fontSize: 13,
+  container: {
+    padding: 10,
+    flex:1
   },
 });

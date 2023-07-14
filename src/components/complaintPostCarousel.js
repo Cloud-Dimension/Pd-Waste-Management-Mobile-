@@ -9,15 +9,16 @@ import {
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { COLORS } from "../constants/Constants";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const PostCard = ({ image, category, onPress, address }) => {
   const [showLocation, setShowLocation] = useState(true);
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableWithoutFeedback style={{ padding: 10 }} onPress={onPress}>
       <View style={styles.card}>
         <View style={styles.imageContainer}>
-          <Image source={image} style={styles.image} />
+          <Image source={{uri:image}} style={styles.image} />
         </View>
         <View style={styles.categoryContainer}>
           <Text style={styles.category}>{category}</Text>
@@ -25,7 +26,7 @@ const PostCard = ({ image, category, onPress, address }) => {
             <View style={styles.locationContainer}>
               <FontAwesome
                 name="map-marker"
-                size={30}
+                size={24}
                 color={COLORS.PRIMARY}
                 style={styles.locationIcon}
               />
@@ -40,7 +41,7 @@ const PostCard = ({ image, category, onPress, address }) => {
           ) : null}
         </View>
       </View>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -68,9 +69,15 @@ const styles = StyleSheet.create({
     width: 200,
     height: 250,
     marginRight: 10,
-    borderRadius: 8,
     overflow: "hidden",
     backgroundColor: COLORS.BACKGROUND_WHITE,
+    borderRadius: 10,
+    shadowColor: COLORS.GREY,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    elevation: 10,
+    padding: 10,
   },
   imageContainer: {
     flex: 1,
@@ -88,9 +95,9 @@ const styles = StyleSheet.create({
     height: 90,
   },
   category: {
-    color: COLORS.BLACK,
+    color: "gray",
     fontSize: 14,
-    fontFamily: "bold",
+    fontWeight: "bold",
     flex: 1,
   },
   locationContainer: {

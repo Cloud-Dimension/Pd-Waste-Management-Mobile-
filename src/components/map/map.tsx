@@ -27,7 +27,7 @@ export interface IMap {
   places?: IPlace[];
 }
 
-const map = ({ center, coordinates, target, zoom, places, from, to }) => {
+const map = ({ center, coordinates, target, zoom, places, from, to,iconPath }) => {
   const latLong = `[-25.858460,28.189610]`;
   const jsonPlaces = JSON.stringify(places);
   const html = `
@@ -65,9 +65,14 @@ const map = ({ center, coordinates, target, zoom, places, from, to }) => {
             map.attributionControl.setPrefix('');
 
             var places = ${jsonPlaces};
-
+            var customIcon = L.icon({
+              iconUrl: "https://cdn-icons-png.flaticon.com/512/6395/6395271.png",
+              iconSize: [60, 60],
+              iconAnchor: [12, 41],
+              popupAnchor: [0, -41]
+          });
             places.forEach(function (place) {
-                var marker = L.marker([place.coordinates[0], place.coordinates[1]]).addTo(map);
+                var marker = L.marker([place.coordinates[0], place.coordinates[1]],{ icon: customIcon }).addTo(map);
                 marker.bindPopup("<b>" + place.placeName + "</b><br>" + place.description);
             });
 

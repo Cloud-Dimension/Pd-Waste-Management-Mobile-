@@ -135,7 +135,7 @@ const ComplainDetails = () => {
               style={{ alignItems: "center" }}
             >
               <View>
-                <Entypo name="camera" size={80} color={COLORS.SECONDARY} />
+                <Entypo name="camera" size={80} color={COLORS.PRIMARY} />
                 <Text style={{ color: "grey" }}>Upload picture</Text>
               </View>
             </TouchableWithoutFeedback>

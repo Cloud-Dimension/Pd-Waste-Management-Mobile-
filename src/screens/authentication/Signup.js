@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
-import { SafeAreaView, Keyboard, KeyboardAvoidingView } from "react-native";
+//import { SafeAreaView, Keyboard, KeyboardAvoidingView } from "react-native";
 import InputWithBoarders from "../../components/inputWithBoarders";
 import { COLORS } from "../../constants/Constants";
 import WMButton from "../../components/WMButton";
@@ -16,27 +16,12 @@ const Signup = () => {
   const onSignUpClicked = async () => {
     navigation.navigate("Signup");
   };
-  const handleKeyboardDidShow = () => {
-    setKeyboardOpen(true);
-  };
 
-  const handleKeyboardDidHide = () => {
-    setKeyboardOpen(false);
-  };
   useEffect(() => {
-    Keyboard.addListener("keyboardDidShow", handleKeyboardDidShow);
-    Keyboard.addListener("keyboardDidHide", handleKeyboardDidHide);
-
-    // Clean up the listeners when the component unmounts
-    return () => {
-      Keyboard.removeListener("keyboardDidShow", handleKeyboardDidShow);
-      Keyboard.removeListener("keyboardDidHide", handleKeyboardDidHide);
-    };
   }, []);
 
   return (
     <AppView style={styles.safeAreaView}>
-      <KeyboardAvoidingView style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.container}>
             <Text style={styles.enterText}>
@@ -97,22 +82,17 @@ const Signup = () => {
                   borderColor={COLORS.PRIMARY}
                 />
               </View>
-            </View>
-          </View>
-        </ScrollView>
-        {keyboardOpen ? null : (
-          <View
+
+              <View
             style={{
-              padding: 20,
               alignSelf: "center",
-              position: "absolute",
-              bottom: 40,
             }}
           >
             <WMButton title="Sign Up" width={200} onClick={onSignUpClicked} />
           </View>
-        )}
-      </KeyboardAvoidingView>
+            </View>
+          </View>
+        </ScrollView>
     </AppView>
   );
 };

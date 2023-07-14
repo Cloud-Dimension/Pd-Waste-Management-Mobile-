@@ -19,11 +19,11 @@ const Login = () => {
   const [keyboardOpen, setKeyboardOpen] = useState(false);
 
   const onSignInClicked = async () => {
-    
+    updateLoginStatus(true);
   };
 
   const onLogInClicked = async () => {
-    if (isLoggedIn) return <AuthStack />;
+    updateLoginStatus(true);
   };
   const handleKeyboardDidShow = () => {
     setKeyboardOpen(true);
@@ -33,13 +33,11 @@ const Login = () => {
     setKeyboardOpen(false);
   };
   useEffect(() => {
-    Keyboard.addListener("keyboardDidShow", handleKeyboardDidShow);
-    Keyboard.addListener("keyboardDidHide", handleKeyboardDidHide);
-
-    // Clean up the listeners when the component unmounts
+    Keyboard?.addListener("keyboardDidShow", handleKeyboardDidShow);
+    Keyboard?.addListener("keyboardDidHide", handleKeyboardDidHide);
     return () => {
-      Keyboard.removeListener("keyboardDidShow", handleKeyboardDidShow);
-      Keyboard.removeListener("keyboardDidHide", handleKeyboardDidHide);
+      Keyboard?.removeListener("keyboardDidShow", handleKeyboardDidShow);
+      Keyboard?.removeListener("keyboardDidHide", handleKeyboardDidHide);
     };
   }, []);
 
@@ -57,46 +55,51 @@ const Login = () => {
             <View style={styles.contentView}>
               <View>
                 <InputWithBoarders
-                  placeholder="E-mail"
+                  placeholder="UserName"
                   borderColor={COLORS.PRIMARY}
                 />
               </View>
-              <View style={{marginTop:10}}>
+              <View style={{ marginTop: 10 }}>
                 <InputWithBoarders
                   placeholder="Password"
                   borderColor={COLORS.PRIMARY}
                 />
               </View>
 
-              <TouchableOpacity
+              <View
                 style={{
                   justifyContent: "center",
                   alignItems: "center",
                   marginTop: 20,
                   marginBottom: 20,
                 }}
-                onPress={() => onLogInClicked}
               >
                 <WMButton
                   title="Log In"
                   width={200}
                   onClick={onSignInClicked}
                 />
-              </TouchableOpacity>
+              </View>
               <TouchableOpacity
                 style={styles.forgotPasswordLink}
-                onPress={() =>  navigation.navigate("ForgotPassoword")}
+                onPress={() => navigation.navigate("ForgotPassoword")}
               >
                 <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
               </TouchableOpacity>
             </View>
             <View style={{ marginTop: 10 }}>
-              <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-              <Divider style={{ width:180}} />
-              <Text style={styles.orText}>Or</Text>
-              <Divider style={{ width:180}} />
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Divider style={{ width: 180 }} />
+                <Text style={styles.orText}> or </Text>
+                <Divider style={{ width: 180 }} />
               </View>
-             
+
               <View style={styles.shadowView}>
                 <Entypo name="google--with-circle" size={20} color="black" />
                 <Text style={{ marginHorizontal: 18 }}>
@@ -125,7 +128,7 @@ const Login = () => {
             <Text style={{ color: COLORS.GREY }}>Don't have an account? </Text>
             <TouchableOpacity
               style={styles.forgotPasswordLink}
-              onPress={() =>navigation.navigate("Signup")}
+              onPress={() => navigation.navigate("Signup")}
             >
               <Text style={styles.forgotPasswordText}>Sign Up</Text>
             </TouchableOpacity>
@@ -169,8 +172,8 @@ const styles = StyleSheet.create({
   },
   contentView: {
     marginVertical: 30,
-    flexDirection:'column',
-    justifyContent:'space-between'
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   orText: {
     color: COLORS.PRIMARY,

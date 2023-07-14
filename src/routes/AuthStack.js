@@ -17,10 +17,10 @@ const Stack = createStackNavigator();
 const AuthStack = () => {
   const { updateLoginStatus } = useContext(AuthContext);
 
-  const onSkipPressed = (navigation) => {
-    updateLoginStatus(true);
-    navigation.navigate("Route");
-  };
+  // const onSkipPressed = (navigation) => {
+  //   updateLoginStatus(true);
+  //   navigation.navigate("Route");
+  // };
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -34,14 +34,14 @@ const AuthStack = () => {
           headerStyle: {
             backgroundColor: "transparent",
           },
-          headerShown: true,
-          headerRight: () => (
-            <View style={{ marginRight: 10 }}>
-              <TouchableOpacity onPress={() => onSkipPressed(navigation)}>
-                <Text style={{ marginRight: 20, fontSize: 17 }}>Skip</Text>
-              </TouchableOpacity>
-            </View>
-          ),
+          headerShown: false,
+          // headerRight: () => (
+          //   <View style={{ marginRight: 10 }}>
+          //     <TouchableOpacity onPress={() => onSkipPressed(navigation)}>
+          //       <Text style={{ marginRight: 20, fontSize: 17 }}>Skip</Text>
+          //     </TouchableOpacity>
+          //   </View>
+          // ),
         })}
       />
       <Stack.Screen
@@ -52,7 +52,7 @@ const AuthStack = () => {
           headerStyle: {
             backgroundColor: "transparent",
           },
-          headerShown: true,
+          headerShown: false,
           headerLeft: () => (
             <View style={{ marginLeft: 10 }}>
               <FontAwesome
@@ -74,7 +74,7 @@ const AuthStack = () => {
           headerStyle: {
             backgroundColor: "transparent",
           },
-          headerShown: true,
+          headerShown: false,
           headerLeft: () => (
             <View style={{ marginLeft: 10 }}>
               <FontAwesome
@@ -95,7 +95,7 @@ const AuthStack = () => {
           headerStyle: {
             backgroundColor: "transparent",
           },
-          headerShown: true,
+          headerShown: false,
           headerLeft: () => (
             <View style={{ marginLeft: 10 }}>
               <FontAwesome

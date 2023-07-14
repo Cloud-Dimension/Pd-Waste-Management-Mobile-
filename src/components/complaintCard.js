@@ -25,7 +25,7 @@ const ComplaintCard = ({ complainType, complaintCount, complainTypeIconName,page
             <View
               style={{
                 flexDirection: "row",
-                backgroundColor: COLORS.SECONDARY,
+                backgroundColor: COLORS.PRIMARY,
                 borderRadius: 10,
               }}
             >
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   leftIcon: {
     //marginRight: 0,
     //borderRadius: 6,
-    color: COLORS.SECONDARY,
+    color: COLORS.PRIMARY,
   },
   complaintText: {
     fontSize: 16,

@@ -16,6 +16,7 @@ import ComplainDetails from "../screens/appFlow/ComplainDetails";
 import PrevComplains from "../screens/appFlow/PrevComplains";
 import PostComplaintDetails from "../screens/appFlow/PostComplaintDetails";
 import { useNavigation } from "@react-navigation/native";
+import ComplaintDetails from "../screens/appFlow/ComplaintDetails";
 
 const HomeNavigator = createStackNavigator();
 
@@ -42,7 +43,7 @@ const HomeStack = () => {
                   style={styles.icon}
                 />
                 <View style={{ flexDirection: "column" }}>
-                  <Text style={styles.locationTitle}>Choose Location</Text>
+                  <Text style={styles.locationTitle}>You are here</Text>
                   <Text style={{ color: COLORS.BACKGROUND_WHITE }}>
                     265 West Avenue
                   </Text>
@@ -200,15 +201,18 @@ const HomeStack = () => {
           headerTintColor: "#ffffff",
         }}
       />
-         <HomeNavigator.Screen name="PostComplaintDetails" component={PostComplaintDetails}   options={{
+      <HomeNavigator.Screen
+        name="PostComplaintDetails"
+        component={PostComplaintDetails}
+        options={{
           headerStyle: {
             backgroundColor: "#2CAC69",
             borderRadius: 25,
             height: 110,
           },
           headerTitleStyle: {
-            fontWeight: 'normal',
-            fontSize: 18
+            fontWeight: "normal",
+            fontSize: 18,
           },
           headerTintColor: "#ffffff",
           headerLeft: () => (
@@ -221,7 +225,8 @@ const HomeStack = () => {
               />
             </View>
           ),
-        }}/>
+        }}
+      />
       <HomeNavigator.Screen
         name="fileComplain"
         component={ComplainDetails}
@@ -240,6 +245,23 @@ const HomeStack = () => {
         }}
       />
       <HomeNavigator.Screen
+        name="reportedComplaint"
+        component={ComplaintDetails}
+        options={{
+          headerStyle: {
+            backgroundColor: "#2CAC69",
+            borderRadius: 25,
+            height: 110,
+          },
+          headerTitleStyle: {
+            fontWeight: "normal",
+            fontSize: 18,
+          },
+          headerTintColor: "#ffffff",
+          headerTitle: "Details",
+        }}
+      />
+      <HomeNavigator.Screen
         name="HelplineDetailsPage"
         component={HelplineDetailsPage}
         options={{
@@ -253,7 +275,7 @@ const HomeStack = () => {
             fontSize: 18,
           },
           headerTintColor: "#ffffff",
-          headerTitle: "Complaint Form",
+          headerTitle: "Helpline Details",
         }}
       />
       <HomeNavigator.Screen

@@ -39,7 +39,7 @@ const Complains = () => {
             marginBottom: 15,
           }}
         >
-          <Text style={{ marginRight: 10 }}>Latest complaints around you</Text>
+          <Text style={{ marginLeft: 20,fontWeight:'bold' }}>Latest complaints around you</Text>
         </View>
         <View
           style={{
