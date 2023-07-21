@@ -10,21 +10,45 @@ import { useEffect } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
+import Toast from "react-native-toast-message";
 import { Divider } from "@rneui/base";
 import AppView from "../../components/AppView";
+import { authenticateUser } from "../../network/NetworkCalls";
+import Loader from "../../components/Loader";
 
 const Login = () => {
   const navigation = useNavigation();
-  const { isLoggedIn, updateLoginStatus } = useContext(AuthContext);
+  const { currentUser, updateCurrentUser } = useContext(AuthContext);
   const [keyboardOpen, setKeyboardOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSignInClicked = async () => {
-    updateLoginStatus(true);
+    setIsLoading(true);
+    const decodedUser = await authenticateUser("adminr", "123qwe"); //to be hooked to the form
+    if (decodedUser) {
+      updateCurrentUser({
+        user: {
+          id: decodedUser[
+            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
+          ],
+          name: decodedUser[
+            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+          ],
+          surname: "",
+          role: decodedUser[
+            "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+          ],
+          emailAddress:
+            decodedUser[
+              "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
+            ],
+        },
+        isLoggedIn: true,
+      });
+    }
+    setIsLoading(false);
   };
 
-  const onLogInClicked = async () => {
-    updateLoginStatus(true);
-  };
   const handleKeyboardDidShow = () => {
     setKeyboardOpen(true);
   };
@@ -114,6 +138,8 @@ const Login = () => {
               </View>
             </View>
           </View>
+        
+          {isLoading && <Loader />}
         </ScrollView>
         {keyboardOpen ? null : (
           <View
@@ -134,6 +160,7 @@ const Login = () => {
             </TouchableOpacity>
           </View>
         )}
+          <Toast />
       </KeyboardAvoidingView>
     </AppView>
   );

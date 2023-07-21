@@ -15,10 +15,10 @@ import { useContext } from "react";
 const TabNavigator = createBottomTabNavigator();
 
 const Route = () => {
-  const { isLoggedIn, updateLoginStatus } = useContext(AuthContext);
+  const { currentUser, updateCurrentUser } = useContext(AuthContext);
   return (
     <>
-      {!isLoggedIn ? (
+      {!currentUser?.isLoggedIn ? (
         <AuthStack />
       ) : (
         <TabNavigator.Navigator

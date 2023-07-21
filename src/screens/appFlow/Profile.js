@@ -21,7 +21,7 @@ import AppView from "../../components/AppView";
 
 const Profile = () => {
   const navigation = useNavigation();
-  const { isLoggedIn, updateLoginStatus } = useContext(AuthContext);
+  const { currentUser, updateCurrentUser } = useContext(AuthContext);
   const [keyboardOpen, setKeyboardOpen] = useState(false);
   const [editProfile, setEditProfile] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -38,7 +38,10 @@ const Profile = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      updateLoginStatus(false);
+      updateCurrentUser({
+        user: null,
+        isLoggedIn: false,
+      });
     }, 1000);
   };
 
